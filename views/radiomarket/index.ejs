@@ -1,0 +1,30 @@
+<% include ../partials/header %> 
+
+ <div class="container">
+         <div class="container jumbotron well form-center">
+             <h1>W4OLB</h1>
+             <h2>Smoky Mountain Amateur Radio Club</h2>
+             <p>Check out the Amateur Radio related items listed here!</p>
+             <p>
+                <a class="btn btn-primary btn-large" href="/radiomarket/new">Add New Item</a>
+             </p>
+         </div>
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% campgrounds.forEach(function(campground){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= campground.image %>">
+                   <div class="caption">
+                       <h4><%= campground.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/radiomarket/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>
