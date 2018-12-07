@@ -108,10 +108,14 @@ router.get("/users/:_id/edit", middleware.checkProfileOwnership, function(req, r
         res.render("users/edit", {user: foundUser});
     });
 });
-// UPDATE CAMPGROUND ROUTE
+// UPDATE PROFILE ROUTE
 router.put("/users/:id", function(req, res){
     // find and update the correct campground
     User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){
+        if(req.body.memberCode === "0"){
+            updatedUser.isMember = false;
+            updatedUser.isAdmin = false;
+        }
         if(req.body.memberCode === "1"){
             updatedUser.isMember = true;
         }
@@ -127,4 +131,17 @@ router.put("/users/:id", function(req, res){
         }
     });
 });
+
+router.get("/users/:_id/admin", function(req, res){
+    req.username(req.params.isAdmin, function(err, foundAdmin){
+        if(foundAdmin){
+            User.findById(req.params.id, req.body.user, function(err, foundUser){
+                if(foundUser){
+                    res.render("users/:_id/admin")
+                }
+            })
+        }
+    })
+})
+
 module.exports = router;

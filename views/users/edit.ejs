@@ -5,20 +5,21 @@
         <div class="container form-center">
             <h1>Edit <%= user.username %> Profile</h1>
             <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+                <h3>E-Mail Address</h3>
             <div class="form-group">
                 <input type="email" name="user[email]" value="<%= user.email %>">
             </div>
+                <h3>Telephone Number</h3>
             <div class="form-group">
                 <input type="tel" name="user[phone]" value="<%= user.phone %>">
             </div>
+                <h3>Profile Image URL</h3>
             <div class="form-group">
                 <input type="text" name="user[profileImage]" value="<%= user.profileImage %>">
             </div>
+            <h3>Profile Information</h3>
             <div>
                 <input type="text" name="user[profileInfo]" value="<%= user.profileInfo %>">
-            </div>
-            <div>
-                <input type="text" name="user[memberCode]" placeholder="Member?">
             </div>
             <div class="form-group">
                 <input class="btn btn-primary" type="submit" value="Submit">

@@ -52,13 +52,12 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
 middlewareObj.checkProfileOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
         User.findById(req.params._id, function(err, foundUser){
-            console.log(foundUser);
            if(err || !foundUser){
                req.flash("error", "User not found");
                res.redirect("/home");
            }  else {
                // does user own the comment?
-            if(User.isAdmin === true || foundUser._id.equals(req.user.id)) {
+            if(foundUser._id.equals(req.user.id)) {
                 next();
             } else {
                 req.flash("error", "You don't have permission to do that");
@@ -67,7 +66,7 @@ middlewareObj.checkProfileOwnership = function(req, res, next) {
        }
     });
 } else {
-    req.flash("error", "You need to be logged in to do that")
+    req.flash("error", "You need to be logged in to do that");
     res.redirect("back");
 }
 };

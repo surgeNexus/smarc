@@ -1,0 +1,17 @@
+<div class="container form-center">
+        <% if(user.isAdmin === true){ %>
+            <div class="row">
+                <h1>***Admin***</h1>
+                <p>Code "0" = Not Member/Admin (Reset)</p>
+                <p>Code "1" = Club Member</p>
+                <h3>Caution! The below option gives full permissions to edit profiles.</h3>
+                <p>Code "2" = Administrator</p>
+                <div class="row">
+                    <input type="text" name="user[memberCode]" placeholder="Member Code">
+                </div>
+                <div class="row">
+                    <input class="btn btn-danger" type="submit" value="Submit">
+                </div>
+            </div>
+        <% } %>
+</div>
