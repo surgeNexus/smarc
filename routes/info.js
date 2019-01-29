@@ -11,7 +11,7 @@ router.get("/officers", function(req, res){
 })
 
 router.get('/newsletter', function (req, res) {
-    var filePath = "./public/files/pdf/bookmarksample.pdf";
+    var filePath = "./public/files/pdf/august.pdf";
 
     fs.readFile(filePath , function (err,data){
         res.contentType("application/pdf");
